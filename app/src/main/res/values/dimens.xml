@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="status_flag">5dp</dimen>
+    <dimen name="post_header_padding">10dp</dimen>
+    <dimen name="post_table_left_padd">5dp</dimen>
+</resources>

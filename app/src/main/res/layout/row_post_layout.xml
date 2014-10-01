@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/post_row"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/status_flag"
+        android:layout_width="@dimen/status_flag"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_blue_bright"
+        />
+
+    <LinearLayout
+        android:id="@+id/post_table"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/post_table_left_padd"
+        android:paddingRight="@dimen/post_table_left_padd"
+        >
+
+        <RelativeLayout
+            android:id="@+id/post_header"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/post_createdby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="jmeno"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                />
+            <TextView
+                android:id="@+id/post_createdat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="datum"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/post_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            />
+    </LinearLayout>
+</LinearLayout>
