@@ -7,7 +7,9 @@ import java.util.List;
  * Created by ph on 9/30/14.
  */
 public class DsDetail {
+    // Details about Disscusion
     private ApiDs mDs;
+    // List of Posts
     private List<ApiDsPost> mPosts = new ArrayList<ApiDsPost>();
 
     /**

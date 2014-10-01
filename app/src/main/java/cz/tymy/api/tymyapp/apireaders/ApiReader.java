@@ -51,9 +51,10 @@ public class ApiReader {
                 JSONObject msgData = (JSONObject) msg.getData();
                 // get 'discussion' from api_msg
                 ApiDs ds = new ApiDs(msgData.getJSONObject(ApiMsg.K_DISCUSSION));
-                // get 'posts' array from api_msg
-                List<ApiDsPost> apiDsPosts = readApiDsPostArray((JSONArray) msgData.getJSONArray(ApiMsg.K_POSTS));
                 dsDetail.setDs(ds);
+                // get 'posts' array from api_msg
+                List<ApiDsPost> apiDsPosts = readApiDsPostArray(
+                        (JSONArray) msgData.getJSONArray(ApiMsg.K_POSTS));
                 dsDetail.setPosts(apiDsPosts);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -99,6 +100,7 @@ public class ApiReader {
 
     private List<ApiDsPost> readApiDsPostArray(JSONArray array) {
         List<ApiDsPost> apiDsPosts = new ArrayList<ApiDsPost>();
+        int newPosts = 3;
 
         for (int i = 0; i < array.length(); i++){
             try {

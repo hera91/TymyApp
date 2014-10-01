@@ -10,11 +10,9 @@ import java.net.URLEncoder;
 public class ApiLoader extends AsyncTaskLoader<String> {
     public static final String CMD = "cmd";
     public static final String SEND_STATUS = "send_status";
-    public static final String LOAD_LIST = "load_list";
     public static final String NAME = "name";
     public static final String STATUS = "status";
     public static final String COMMENT = "comment";
-    public static final String LOGIN = "login";
     private static final String BASE_URL = "http://pd.tymy.cz/api/";
     private static final String USER = "hera";
     private static final String PASSWORD = "bistromat";

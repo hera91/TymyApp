@@ -5,4 +5,11 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="NewPost" parent="AppTheme">
+        <item name="android:background">@android:color/holo_blue_bright</item>
+    </style>
+    <style name="SeenPost" parent="AppTheme">
+        <item name="android:background">@android:color/darker_gray</item>
+    </style>
+
 </resources>

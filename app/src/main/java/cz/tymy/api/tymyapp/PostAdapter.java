@@ -31,7 +31,7 @@ public class PostAdapter extends ArrayAdapter<ApiDsPost> {
     }
 
     /**
-     * Row layout model, class for access to row fileds
+     * Row layout model, class for access to row fields
      */
     private static class ViewHolder{
         TextView postText;
@@ -56,14 +56,18 @@ public class PostAdapter extends ArrayAdapter<ApiDsPost> {
             viewHolder.statusFlag = (TextView) rowView.findViewById(R.id.status_flag);
             rowView.setTag(viewHolder);
         } else {
+            // Using of ViewHolder pattern
             viewHolder = (ViewHolder) rowView.getTag();
         }
 
         viewHolder.postText.setText(Html.fromHtml(mDsDetail.getPosts().get(position).getPost()));
         viewHolder.createdBy.setText(Html.fromHtml((mDsDetail.getPosts().get(position).getCreatedByCallName())));
         viewHolder.createdAt.setText(Html.fromHtml(mDsDetail.getPosts().get(position).getCreatedAtStr()));
-//        if (mDsDetail.getDs().getNewPosts() >= position)
-//           viewHolder.statusFlag.setBackgroundColor(Color.rgb(255,255,255));
+        // Set style for new posts
+        if (position < mDsDetail.getDs().getNewPosts())
+            viewHolder.statusFlag.setBackgroundResource(android.R.color.holo_blue_bright);
+        else
+            viewHolder.statusFlag.setBackgroundResource(android.R.color.darker_gray);
         return rowView;
     }
 

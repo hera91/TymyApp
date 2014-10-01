@@ -9,6 +9,7 @@ import org.json.JSONObject;
  * Created by ph on 9/29/14.
  */
 public class ApiDsPost {
+    /* API Msg description */
     /* K_ for "KEY" */
     public static final String K_ID = "id";
     public static final String K_DISCUSSIONID = "discussionId";
@@ -20,6 +21,7 @@ public class ApiDsPost {
     public static final String K_CREATEDATSTR = "createdAtStr";
     public static final String K_CREATEDBY = "createdBy";
 
+    // internal values
     private int id;
     private int discussionId;
     private String post;
@@ -29,7 +31,6 @@ public class ApiDsPost {
     private boolean sticky;
     private String createdAtStr;
     private CreatedBy createdBy;
-
 
     public ApiDsPost(JSONObject jsonObject) {
         try {
