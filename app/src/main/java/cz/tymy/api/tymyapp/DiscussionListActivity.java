@@ -36,6 +36,8 @@ public class DiscussionListActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discussion_list);
 
+        // Application state singleton.
+        TymyApplication appState = (TymyApplication) this.getApplication();
 
         if (findViewById(R.id.discussion_detail_container) != null) {
             // The detail container view will be present only in the
@@ -46,9 +48,11 @@ public class DiscussionListActivity extends FragmentActivity
 
             // In two-pane mode, list items should be given the
             // 'activated' state when touched.
-            ((DiscussionListFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.discussion_list))
-                    .setActivateOnItemClick(true);
+            if (appState.isOnline()) {
+                ((DiscussionListFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.discussion_list))
+                        .setActivateOnItemClick(true);
+            }
         }
 
         // TODO: If exposing deep links into your app, handle intents here.

@@ -5,13 +5,9 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
-
 
 import java.io.IOException;
 
-import cz.tymy.api.tymyapp.apimodel.ApiDsPost;
 import cz.tymy.api.tymyapp.apireaders.ApiReader;
 
 /**
@@ -22,6 +18,7 @@ import cz.tymy.api.tymyapp.apireaders.ApiReader;
  */
 public class DiscussionDetailFragment extends ListFragment
         implements LoaderManager.LoaderCallbacks<String>{
+
     /**
      * The fragment argument representing the item K_ID that this fragment
      * represents.
@@ -48,6 +45,8 @@ public class DiscussionDetailFragment extends ListFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Application state singleton.
+        TymyApplication appState = (TymyApplication) this.getActivity().getApplication();
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
@@ -56,6 +55,9 @@ public class DiscussionDetailFragment extends ListFragment
             Bundle args = new Bundle();
             args.putString(ApiLoader.CMD, ApiLoader.POST_LIST);
             args.putString(ApiLoader.DS_ID, mDsId);
+            args.putString(ApiLoader.USER, appState.getUser());
+            args.putString(ApiLoader.PASS, appState.getPass());
+            args.putString(ApiLoader.BASE_URL, appState.getUrl());
             getLoaderManager().initLoader(Integer.parseInt(mDsId), args, this);
         }
 

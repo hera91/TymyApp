@@ -92,6 +92,9 @@ public class DiscussionListFragment extends ListFragment
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Application state singleton
+        TymyApplication appState = (TymyApplication) this.getActivity().getApplication();
+
         // Restore the previously serialized activated item position.
         if (savedInstanceState != null
                 && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
@@ -99,6 +102,9 @@ public class DiscussionListFragment extends ListFragment
         }
         Bundle args = new Bundle();
         args.putString(ApiLoader.CMD, ApiLoader.DS_LIST);
+        args.putString(ApiLoader.USER, appState.getUser());
+        args.putString(ApiLoader.PASS, appState.getPass());
+        args.putString(ApiLoader.BASE_URL, appState.getUrl());
         getLoaderManager().initLoader(0, args, this);
     }
 
