@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/add_site_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/add_site"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/add_site_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_site_name"
+        android:inputType="textPersonName"
+        android:lines="1"
+        />
+
+    <EditText
+        android:id="@+id/add_site_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_site_url"
+        android:lines="1"
+        android:inputType="textUri" />
+
+    <EditText
+        android:id="@+id/add_site_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|left"
+        android:hint="@string/add_site_user"
+        android:lines="1"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/add_site_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|left"
+        android:hint="@string/add_site_pass"
+        android:lines="1"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/add_site_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="@string/add_site_subimt" />
+
+</LinearLayout>

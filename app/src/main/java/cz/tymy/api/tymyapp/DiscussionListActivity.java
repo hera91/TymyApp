@@ -25,6 +25,8 @@ public class DiscussionListActivity extends FragmentActivity
         implements DiscussionListFragment.Callbacks {
 
     public static final String TAG = "TymyApp";
+    public static final String EXTRA_ID = "id";
+
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.

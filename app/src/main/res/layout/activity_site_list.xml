@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cz.tymy.api.tymyapp.SiteList"
+    tools:ignore="MergeRootFrame"
+    >
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onAddSiteClicked"
+        android:text="@string/add_site" />
+
+    <fragment
+        android:id="@+id/site_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        class="cz.tymy.api.tymyapp.SiteListFragment"
+        />
+
+</LinearLayout>
