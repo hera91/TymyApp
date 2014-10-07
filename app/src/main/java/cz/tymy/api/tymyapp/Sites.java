@@ -48,9 +48,6 @@ public class Sites {
                     + COLUMN_ORDER + " INTEGER"
                     + ");";
             db.execSQL(sql);
-            //TODO remove development insert
-            db.execSQL("INSERT INTO " + TB_NAME + " VALUES ("
-                    + "null,'dev','http://dev.tymy.cz/', 'hera', 'bistromat', 0);");
         }
 
 		/*
