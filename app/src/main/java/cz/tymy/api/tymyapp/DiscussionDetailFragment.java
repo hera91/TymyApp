@@ -57,7 +57,7 @@ public class DiscussionDetailFragment extends ListFragment
             args.putString(ApiLoader.DS_ID, mDsId);
             args.putString(ApiLoader.USER, appState.getUser());
             args.putString(ApiLoader.PASS, appState.getPass());
-            args.putString(ApiLoader.BASE_URL, appState.getUrl());
+            args.putString(ApiLoader.SITE_URL, appState.getUrl());
             getLoaderManager().initLoader(Integer.parseInt(mDsId), args, this);
         }
 

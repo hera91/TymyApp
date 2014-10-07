@@ -5,9 +5,6 @@ import android.os.Bundle;
 import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
 import cz.tymy.api.tymyapp.apimodel.Api;
 
 public class ApiLoader extends AsyncTaskLoader<String> {
@@ -17,7 +14,7 @@ public class ApiLoader extends AsyncTaskLoader<String> {
     public static final String DS_ID = "ds_id";
     public static final String USER = "user";
     public static final String PASS = "pass";
-    public static final String BASE_URL = "base_url";
+    public static final String SITE_URL = "site_url";
     private Bundle args;
     private String result;
 
@@ -28,44 +25,26 @@ public class ApiLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        HttpClient hc = new HttpClient(BASE_URL);
+        HttpClient hc = new HttpClient(SITE_URL);
+        String request;
         Log.v(DiscussionListActivity.TAG, "loadInBackground");
         try {
-            if (DS_LIST.equals(this.args.getString(CMD)))
-                result = hc.sendGet(getDsListUrl());
-            else if (POST_LIST.equals(this.args.getString(CMD)))
-                result = hc.sendGet(getPostListUrl());
+            // Discussion List
+            if (DS_LIST.equals(this.args.getString(CMD))) {
+                request = Api.getDsListUrl(args.getString(SITE_URL),
+                        args.getString(USER), args.getString(PASS));
+                result = hc.sendGet(request);
+            // Posts List
+            } else if (POST_LIST.equals(this.args.getString(CMD))) {
+                request = Api.getPostListUrl(args.getString(SITE_URL), args.getString(DS_ID), "1",
+                        args.getString(USER), args.getString(PASS));
+                result = hc.sendGet(request);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return result;
-    }
-
-    //TODO could be moved into Application class
-    // Collect discussion request url
-    private String getDsListUrl() throws UnsupportedEncodingException {
-        String url = args.getString(BASE_URL)
-                + Api.DISCUSSIONS_ACCESSIBLE_WITH_NEW
-                + getAuth();
-        return url;
-    }
-
-    //TODO could be moved into Application class
-    // Collect discussion posts list request url
-    private String getPostListUrl() throws UnsupportedEncodingException {
-        String url =  args.getString(BASE_URL)
-                + Api.DISCUSSION + args.getString(DS_ID) + Api.HTML + "1?"
-                + getAuth();
-        return url;
-    }
-
-    //TODO could be moved into Application class
-    // Collect authentication attributes of url request
-    private String getAuth() throws UnsupportedEncodingException {
-        String auth = "login=" + URLEncoder.encode(args.getString(USER), "UTF-8") + "&"
-                + "password=" + URLEncoder.encode(args.getString(PASS), "UTF-8");
-        return auth;
     }
 
     @Override

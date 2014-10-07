@@ -104,7 +104,7 @@ public class DiscussionListFragment extends ListFragment
         args.putString(ApiLoader.CMD, ApiLoader.DS_LIST);
         args.putString(ApiLoader.USER, appState.getUser());
         args.putString(ApiLoader.PASS, appState.getPass());
-        args.putString(ApiLoader.BASE_URL, appState.getUrl());
+        args.putString(ApiLoader.SITE_URL, appState.getUrl());
         getLoaderManager().initLoader(0, args, this);
     }
 

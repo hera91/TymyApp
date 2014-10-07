@@ -2,35 +2,33 @@ package cz.tymy.api.tymyapp;
 
 import android.app.Application;
 import android.content.Context;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
-import cz.tymy.api.tymyapp.apimodel.Api;
 
 /**
  * Application singleton for sharing application state through runtime configuration changes
  */
 public class TymyApplication extends Application {
     private static TymyApplication ourInstance;
+    // Local vars
+    private Context ctx;
+    // Current user, password and url
+    private String user;
+    private String pass;
+    private String url;
+
 
     public static TymyApplication getInstance() {
         return ourInstance;
     }
 
-    // Private constructor
-//    private TymyApplication() {
-//    }
-
     @Override
     public void onCreate() {
         super.onCreate();
         ourInstance = this;
+        ctx = getApplicationContext();
     }
-
-    // Current user, password and url
-    private String user = "hera";
-    private String pass = "bistromat";
-    private String url = "http://pd.tymy.cz/" + Api.API;
 
     public String getUser() {
         return user;
@@ -51,13 +49,31 @@ public class TymyApplication extends Application {
         this.url = url;
     }
 
+    public void toggleSite(long id) {
+        Sites sites = new Sites(ctx);
+        Cursor site = sites.getSite(id);
+        int urlIndex = site.getColumnIndex(Sites.COLUMN_URL);
+        int userIndex = site.getColumnIndex(Sites.COLUMN_USER);
+        int passIndex = site.getColumnIndex(Sites.COLUMN_PASS);
+        if (site.getCount() < 1) {
+            // TODO add Error message
+//			title.setText(R.string.error);
+//			title.setError("");
+        } else {
+            site.moveToNext();
+            this.url = site.getString(urlIndex);
+            this.user = site.getString(userIndex);
+            this.pass = site.getString(passIndex);
+        }
+
+        site.close();
+        sites.close();
+    }
+
     public boolean isOnline() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            return true;
-        }
-        return false;
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }

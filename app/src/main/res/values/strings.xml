@@ -16,5 +16,6 @@
     <string name="delete">Delete</string>
     <string name="site_deleted">Site deleted</string>
     <string name="site_not_deleted">Site delete failed!</string>
+    <string name="http">http://</string>
 
 </resources>

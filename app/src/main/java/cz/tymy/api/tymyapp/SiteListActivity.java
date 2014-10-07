@@ -9,15 +9,17 @@ import android.view.View;
 import android.widget.Toast;
 
 
-public class SiteList extends FragmentActivity
+public class SiteListActivity extends FragmentActivity
         implements SiteListFragment.OnSiteClickedListener, AddSiteFragment.OnAddSiteListener {
 
+    private TymyApplication appState;
     private static final int REQUEST_ADD_SITE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_site_list);
+        appState = (TymyApplication) getApplication();
     }
 
     // Button Add Site clicked
@@ -85,13 +87,13 @@ public class SiteList extends FragmentActivity
     // Site row clicked
     @Override
     public void onSiteClicked(long id) {
-        showSite(id);
+        appState.toggleSite(id);
+        showSite();
     }
 
     // Show discussion list for given Site
-    private void showSite(long id){
-            Intent i = new Intent(this, DiscussionListActivity.class);
-            i.putExtra(DiscussionListActivity.EXTRA_ID, id);
-            startActivity(i);
+    private void showSite(){
+        Intent i = new Intent(this, DiscussionListActivity.class);
+        startActivity(i);
     }
 }
