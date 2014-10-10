@@ -4,7 +4,7 @@ TymyApp
 Android App for Tymy.cz API
 
 
-Aplha Testing
+## Aplha Testing
 ==============
 
 Join TymyTesters for Google Play access
