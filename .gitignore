@@ -30,3 +30,4 @@ proguard/
 
 # Backup files
 *~
+/.project

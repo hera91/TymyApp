@@ -21,16 +21,18 @@ public class ApiDsPost {
     public static final String K_CREATEDATSTR = "createdAtStr";
     public static final String K_CREATEDBY = "createdBy";
 
-    // internal values
+    // API Json fields
     private int id;
     private int discussionId;
     private String post;
     private int createdById;
     private String createdAt;
     private int updatedById;
-    private boolean sticky;
+    private boolean sticky = false;
     private String createdAtStr;
     private CreatedBy createdBy;
+    // Internal atributes
+    private boolean isNew;
 
     public ApiDsPost(JSONObject jsonObject) {
         try {
@@ -124,6 +126,14 @@ public class ApiDsPost {
         return createdBy.getCallName();
     }
 
+    public boolean isNew() {
+        return isNew;
+    }
+
+    public void setNew(boolean isNew) {
+        this.isNew = isNew;
+    }
+
     public String toString(){
         return Html.fromHtml(getCreatedBy().getCallName() + ">>><br>" + getPost()).toString();
     }
@@ -134,6 +144,7 @@ public class ApiDsPost {
         public static final String K_CREATEDBY_CALLNAME = "callName";
         public static final String K_CREATEDBY_PICTUREURL = "pictureUrl";
 
+        // API Json fields
         private int id;
         private String login;
         private String callName;

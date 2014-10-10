@@ -53,7 +53,7 @@ public class DiscussionDetailFragment extends ListFragment
             // to load content from a content provider.
             mDsId = getArguments().getString(ARG_ITEM_ID);
             Bundle args = new Bundle();
-            args.putString(ApiLoader.CMD, ApiLoader.POST_LIST);
+            args.putString(ApiLoader.CMD, ApiLoader.CMD_POST_LIST);
             args.putString(ApiLoader.DS_ID, mDsId);
             args.putString(ApiLoader.USER, appState.getUser());
             args.putString(ApiLoader.PASS, appState.getPass());

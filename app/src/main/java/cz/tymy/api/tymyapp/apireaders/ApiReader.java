@@ -54,7 +54,8 @@ public class ApiReader {
                 dsDetail.setDs(ds);
                 // get 'posts' array from api_msg
                 List<ApiDsPost> apiDsPosts = readApiDsPostArray(
-                        (JSONArray) msgData.getJSONArray(ApiMsg.K_POSTS));
+                        (JSONArray) msgData.getJSONArray(ApiMsg.K_POSTS),
+                        dsDetail.getDs().getNewPosts());
                 dsDetail.setPosts(apiDsPosts);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -98,13 +99,22 @@ public class ApiReader {
         return DSes;
     }
 
-    private List<ApiDsPost> readApiDsPostArray(JSONArray array) {
+    /**
+     * Read API Json Posts array
+     * @param array  API msg Json Posts array
+     * @param newPosts  Number of New Posts
+     * @return  List of ApiDsPost
+     */
+    private List<ApiDsPost> readApiDsPostArray(JSONArray array, int newPosts) {
         List<ApiDsPost> apiDsPosts = new ArrayList<ApiDsPost>();
-        int newPosts = 3;
 
         for (int i = 0; i < array.length(); i++){
             try {
                 ApiDsPost mPost = new ApiDsPost(array.getJSONObject(i));
+                if (!mPost.isSticky() && (i < newPosts)) {
+                    //Post is not sticky and should be market as isNew
+                    mPost.setNew(true);
+                }
                 apiDsPosts.add(mPost);
             } catch (JSONException e) {
                 e.printStackTrace();

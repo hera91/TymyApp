@@ -101,7 +101,7 @@ public class DiscussionListFragment extends ListFragment
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
         Bundle args = new Bundle();
-        args.putString(ApiLoader.CMD, ApiLoader.DS_LIST);
+        args.putString(ApiLoader.CMD, ApiLoader.CMD_DS_LIST);
         args.putString(ApiLoader.USER, appState.getUser());
         args.putString(ApiLoader.PASS, appState.getPass());
         args.putString(ApiLoader.SITE_URL, appState.getUrl());

@@ -42,7 +42,6 @@ public class PostAdapter extends ArrayAdapter<ApiDsPost> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View rowView = convertView;
         ViewHolder viewHolder;
         if (null == rowView) {
@@ -64,9 +63,17 @@ public class PostAdapter extends ArrayAdapter<ApiDsPost> {
         viewHolder.createdBy.setText(Html.fromHtml((mDsDetail.getPosts().get(position).getCreatedByCallName())));
         viewHolder.createdAt.setText(Html.fromHtml(mDsDetail.getPosts().get(position).getCreatedAtStr()));
         // Set style for new posts
-        if (position < mDsDetail.getDs().getNewPosts())
+        // TODO Refactor: consider using of styles instead of exact color
+        if (mDsDetail.getPosts().get(position).isSticky()) {
+            // Sticky Post
+            viewHolder.statusFlag.setBackgroundResource(android.R.color.holo_purple);
+        }
+        else if (mDsDetail.getPosts().get(position).isNew()) {
+            // New Post
             viewHolder.statusFlag.setBackgroundResource(android.R.color.holo_blue_bright);
+        }
         else
+            // Seen Post
             viewHolder.statusFlag.setBackgroundResource(android.R.color.darker_gray);
         return rowView;
     }
