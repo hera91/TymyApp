@@ -111,7 +111,9 @@ public class ApiReader {
         for (int i = 0; i < array.length(); i++){
             try {
                 ApiDsPost mPost = new ApiDsPost(array.getJSONObject(i));
-                if (!mPost.isSticky() && (i < newPosts)) {
+                if (mPost.isSticky()) {
+                    newPosts++; //
+                } else if (i < newPosts) {
                     //Post is not sticky and should be market as isNew
                     mPost.setNew(true);
                 }
