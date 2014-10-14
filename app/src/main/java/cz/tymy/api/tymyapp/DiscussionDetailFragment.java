@@ -8,6 +8,7 @@ import android.util.Log;
 
 import java.io.IOException;
 
+import cz.tymy.api.tymyapp.apimodel.ApiException;
 import cz.tymy.api.tymyapp.apireaders.ApiReader;
 
 /**
@@ -80,11 +81,13 @@ public class DiscussionDetailFragment extends ListFragment
     public void onLoadFinished(Loader<String> stringLoader, String results) {
         Log.v(DiscussionListActivity.TAG, results);
         ApiReader ar = new ApiReader();
+        mPostAdapter.clear();
         try {
-            mPostAdapter.clear();
             mPostAdapter.addAll(ar.readApiDsPostList(results));
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ApiException e) {
+            this.setEmptyText("Error " + e.getMessage());
         }
     }
 

@@ -12,14 +12,9 @@ public class HttpClient {
     //public static final String SERVER = "http://10.35.2.186:8080";
     private final String USER_AGENT = "Mozilla/5.0";
     private static final String TAG = "BurpeeApp";
+    private static final int OK = 200;
 
-    public HttpClient(String url){
-        this.mUrlBase = url;
-    }
-    // Json GET request
-    public String getJson() throws Exception {
-        return sendGet(mUrlBase);
-    }
+    public HttpClient(){}
 
     // Json GET request
     public String getJson(String url) throws Exception {
@@ -51,18 +46,23 @@ public class HttpClient {
 
         int responseCode = con.getResponseCode();
 
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
+        if (responseCode == OK) {
 
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            //return result
+            return (String) response.toString();
         }
-        in.close();
-
-        //return result
-        return (String) response.toString();
+        else
+            return null;
     }
 
     // HTTP POST request

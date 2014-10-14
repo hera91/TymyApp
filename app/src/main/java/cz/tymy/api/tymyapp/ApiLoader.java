@@ -25,9 +25,10 @@ public class ApiLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        HttpClient hc = new HttpClient(SITE_URL);
+        HttpClient hc = new HttpClient();
         String request;
         Log.v(DiscussionListActivity.TAG, "loadInBackground");
+        result = null;
         try {
             // Discussion List
             if (CMD_DS_LIST.equals(this.args.getString(CMD))) {
@@ -44,6 +45,9 @@ public class ApiLoader extends AsyncTaskLoader<String> {
             e.printStackTrace();
         }
 
+        if (result == null) {
+            result = Api.NOT_FOUND_MSG;
+        }
         return result;
     }
 

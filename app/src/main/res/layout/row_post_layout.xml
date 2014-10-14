@@ -34,7 +34,7 @@
                 android:id="@+id/post_createdby"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="jmeno"
+                android:text="@string/post_createdby"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 />
@@ -42,7 +42,7 @@
                 android:id="@+id/post_createdat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="datum"
+                android:text="@string/post_createdat"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 />
@@ -52,6 +52,7 @@
             android:id="@+id/post_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/post_text"
             android:autoLink="all"
             />
     </LinearLayout>

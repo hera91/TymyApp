@@ -14,6 +14,7 @@ import android.widget.ListView;
 import java.io.IOException;
 
 import cz.tymy.api.tymyapp.apimodel.ApiDs;
+import cz.tymy.api.tymyapp.apimodel.ApiException;
 import cz.tymy.api.tymyapp.apireaders.ApiReader;
 
 /**
@@ -49,6 +50,11 @@ public class DiscussionListFragment extends ListFragment
      * Adapter for Discussion List
      */
     private ArrayAdapter<ApiDs> mDSesAdapter;
+
+    /**
+     * Application state singleton
+     */
+    private TymyApplication appState;
 
     /**
      * A callback interface that all activities containing this fragment must
@@ -93,7 +99,7 @@ public class DiscussionListFragment extends ListFragment
         super.onViewCreated(view, savedInstanceState);
 
         // Application state singleton
-        TymyApplication appState = (TymyApplication) this.getActivity().getApplication();
+        appState = (TymyApplication) this.getActivity().getApplication();
 
         // Restore the previously serialized activated item position.
         if (savedInstanceState != null
@@ -179,14 +185,18 @@ public class DiscussionListFragment extends ListFragment
 
     @Override
     public void onLoadFinished(Loader<String> stringLoader, String results) {
-        Log.v(DiscussionListActivity.TAG, results);
-        ApiReader ar = new ApiReader();
-        try {
+        if (results != null ) {
+            Log.v(DiscussionListActivity.TAG, results);
+            ApiReader ar = new ApiReader();
             mDSesAdapter.clear();
-            mDSesAdapter.addAll(ar.readApiDSesList(results));
-//            mDSesAdapter.addAll(ar.readApiDsPostList(results));
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                mDSesAdapter.addAll(ar.readApiDSesList(results));
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ApiException e) {
+                this.setEmptyText("Error: " + e.getMessage() + "\n" +
+                        appState.getUser()  + " @ "+ appState.getUrl());
+            }
         }
     }
 

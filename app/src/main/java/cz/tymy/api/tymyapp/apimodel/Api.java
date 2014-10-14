@@ -11,6 +11,8 @@ public class Api {
     private static final String DISCUSSIONS_ACCESSIBLE_WITH_NEW = "/discussions/accessible/withNew/?";
     private static final String DISCUSSION = "/discussion/";
     private static final String HTML = "/html/";
+    public static final String NOT_FOUND_MSG = "{ \"" + ApiMsg.K_STATUS + "\" : \"" + ApiMsg.V_ERROR +
+            "\", \"" + ApiMsg.K_STATUS_MESSAGE + "\" : \"Site not found\"}";
 
     // Collect authentication attributes of url request
     private static String getAuth(String user, String pass) throws UnsupportedEncodingException {
