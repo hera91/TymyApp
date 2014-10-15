@@ -13,6 +13,7 @@
     <string name="add_site_user">Login</string>
     <string name="add_site_pass">Password</string>
     <string name="site_not_added">Site add failed!</string>
+    <string name="site_not_updated">Site update failed!</string>
     <string name="delete">Delete</string>
     <string name="site_deleted">Site deleted</string>
     <string name="site_not_deleted">Site delete failed!</string>
@@ -20,5 +21,8 @@
     <string name="post_text">Post text</string>
     <string name="post_createdby">Name</string>
     <string name="post_createdat">Date:Time</string>
+    <string name="edit">Edit</string>
+    <string name="action_add_site">Add Site</string>
+    <string name="empty_site_list">No Sites..\n(use menu \'Add Site\')</string>
 
 </resources>

@@ -14,7 +14,9 @@ import android.widget.EditText;
  */
 public class AddSiteFragment extends Fragment {
 	OnAddSiteListener listener;
-	
+    private TymyApplication appState;
+    private long id;
+
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -24,6 +26,8 @@ public class AddSiteFragment extends Fragment {
 			throw new ClassCastException(activity.toString()
 					+ " must implement OnAddSiteListener");
 		}
+        id = listener.getSiteId();
+        appState = (TymyApplication) activity.getApplication();
 	}
 	
 
@@ -31,7 +35,8 @@ public class AddSiteFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.add_site, container);
-		
+		if (id != -1)
+            prefillFields(view);
 		Button submit = (Button)view.findViewById(R.id.add_site_submit);
 		submit.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -42,7 +47,7 @@ public class AddSiteFragment extends Fragment {
 		return view;
 	}
 	
-	public void onSubmitClicked(){
+	private void onSubmitClicked(){
 		View root = getView();
 		
 		String name = ((EditText)root.findViewById(R.id.add_site_name)).getText().toString();
@@ -53,7 +58,15 @@ public class AddSiteFragment extends Fragment {
 		listener.onAddSite(name, url, user, pass);
 	}
 
+    private void prefillFields(View view){
+        ((EditText)view.findViewById(R.id.add_site_name)).setText(appState.getName());
+        ((EditText)view.findViewById(R.id.add_site_url)).setText(appState.getUrl());
+        ((EditText)view.findViewById(R.id.add_site_user)).setText(appState.getUser());
+        ((EditText)view.findViewById(R.id.add_site_pass)).setText(appState.getPass());
+    }
+
 	public static interface OnAddSiteListener {
-		public void onAddSite(String name, String url, String user, String pass);
+		public long getSiteId();
+        public void onAddSite(String name, String url, String user, String pass);
 	}
 }

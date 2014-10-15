@@ -100,7 +100,22 @@ public class Sites {
 		return id;
 	}
 
-	public void close() {
+    public long updateSite(long id, String name, String url, String user, String pass) {
+        SQLiteDatabase db = openHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, name);
+        values.put(COLUMN_URL, url);
+        values.put(COLUMN_USER, user);
+        values.put(COLUMN_PASS, pass);
+        values.put(COLUMN_ORDER, 0); // TODO Order not used yet
+
+        db.update(TB_NAME, values, "_id = ?", new String[] {Long.toString(id)});
+        db.close();
+        return id;
+    }
+
+    public void close() {
 		openHelper.close();
 	}
 }

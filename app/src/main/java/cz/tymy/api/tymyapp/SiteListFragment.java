@@ -19,7 +19,8 @@ import android.widget.Toast;
  * List Sites from database.
  */
 public class SiteListFragment extends ListFragment {
-    private static final int MENU_DELETE_ID = 0;
+    private static final int MENU_EDIT_ID = 0;
+    private static final int MENU_DELETE_ID = 1;
     OnSiteClickedListener listener;
 
     @Override
@@ -72,6 +73,7 @@ public class SiteListFragment extends ListFragment {
     @Override
     public void onCreateContextMenu (ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
         super.onCreateContextMenu(menu, v, menuInfo);
+        menu.add(0, MENU_EDIT_ID, 0, R.string.edit);
         menu.add(0, MENU_DELETE_ID, 0, R.string.delete);
     }
 
@@ -82,6 +84,9 @@ public class SiteListFragment extends ListFragment {
         switch (item.getItemId()) {
             case MENU_DELETE_ID:
                 deleteSite(info.id);
+                return true;
+            case MENU_EDIT_ID:
+                listener.onSiteEdit(info.id);
                 return true;
             default:
                 return super.onContextItemSelected(item);
@@ -107,5 +112,6 @@ public class SiteListFragment extends ListFragment {
     // Interface for list Item click, implemented in parent Activity
     public static interface OnSiteClickedListener {
         public void onSiteClicked(long id);
+        public void onSiteEdit(long id);
     }
 }

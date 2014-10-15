@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/post_row"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/post_table_left_padd"
         android:paddingRight="@dimen/post_table_left_padd"
-        >
+        android:paddingTop="@dimen/post_table_top_pad">
 
         <RelativeLayout
             android:id="@+id/post_header"
@@ -37,7 +38,8 @@
                 android:text="@string/post_createdby"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                />
+                android:gravity="left"
+                android:textStyle="bold|italic" />
             <TextView
                 android:id="@+id/post_createdat"
                 android:layout_width="wrap_content"
@@ -45,7 +47,10 @@
                 android:text="@string/post_createdat"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                />
+                android:layout_toRightOf="@+id/post_createdby"
+                android:layout_toEndOf="@+id/post_createdby"
+                android:gravity="right"
+                android:textColor="@android:color/darker_gray" />
         </RelativeLayout>
 
         <TextView
@@ -54,6 +59,7 @@
             android:layout_height="wrap_content"
             android:text="@string/post_text"
             android:autoLink="all"
-            />
+            android:paddingLeft="@dimen/post_left_pad"
+            android:paddingRight="@dimen/post_right_pad"/>
     </LinearLayout>
 </LinearLayout>

@@ -10,10 +10,11 @@ import android.widget.Toast;
 
 
 public class SiteListActivity extends FragmentActivity
-        implements SiteListFragment.OnSiteClickedListener, AddSiteFragment.OnAddSiteListener {
+        implements SiteListFragment.OnSiteClickedListener {
 
     private TymyApplication appState;
     private static final int REQUEST_ADD_SITE = 0;
+    private static final int REQUEST_EDIT_SITE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +32,25 @@ public class SiteListActivity extends FragmentActivity
     // Get AddSiteActivity results and call
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent data){
+        if(resultCode != RESULT_OK)
+            return;
+
+        String name = data.getStringExtra(AddSiteActivity.EXTRA_NAME);
+        String url = data.getStringExtra(AddSiteActivity.EXTRA_URL);
+        String user = data.getStringExtra(AddSiteActivity.EXTRA_USER);
+        String pass = data.getStringExtra(AddSiteActivity.EXTRA_PASS);
+
         if(requestCode == REQUEST_ADD_SITE){
-            if(resultCode != RESULT_OK)
-                return;
-
-            String name = data.getStringExtra(AddSiteActivity.EXTRA_NAME);
-            String url = data.getStringExtra(AddSiteActivity.EXTRA_URL);
-            String user = data.getStringExtra(AddSiteActivity.EXTRA_USER);
-            String pass = data.getStringExtra(AddSiteActivity.EXTRA_PASS);
-
-            onAddSite(name, url, user, pass);
+            addSite(name, url, user, pass);
+        } else if (requestCode == REQUEST_EDIT_SITE) {
+            updateSite(name, url, user, pass);
         }
 
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    // Process AddSiteActivity results
-    public void onAddSite(String name, String url, String user, String pass) {
+    // Process Add Site results
+    public void addSite(String name, String url, String user, String pass) {
         Sites notes = new Sites(this);
         long id = notes.insertSite(name, url, user, pass);
 
@@ -56,6 +59,19 @@ public class SiteListActivity extends FragmentActivity
                     R.id.site_list)).updateList();
         } else{
             Toast.makeText(this, R.string.site_not_added, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    // Process Edit Site results
+    public void updateSite(String name, String url, String user, String pass) {
+        Sites notes = new Sites(this);
+        long id = notes.updateSite(appState.getId(), name, url, user, pass);
+
+        if(id > -1){
+            ((SiteListFragment) getSupportFragmentManager().findFragmentById(
+                    R.id.site_list)).updateList();
+        } else{
+            Toast.makeText(this, R.string.site_not_updated, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -76,7 +92,8 @@ public class SiteListActivity extends FragmentActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_add_site) {
+            onAddSiteClicked(null);
             return true;
         }
 
@@ -89,6 +106,19 @@ public class SiteListActivity extends FragmentActivity
     public void onSiteClicked(long id) {
         appState.toggleSite(id);
         showSite();
+    }
+
+    @Override
+    public void onSiteEdit(long id) {
+        appState.toggleSite(id);
+        Toast.makeText(this, "Edit " + appState.getUrl(), Toast.LENGTH_LONG).show();
+        editSite();
+    }
+
+    private void editSite() {
+        Intent i = new Intent(this, AddSiteActivity.class);
+        i.putExtra(AddSiteActivity.EXTRA_ID, appState.getId());
+        startActivityForResult(i, REQUEST_EDIT_SITE);
     }
 
     // Show discussion list for given Site

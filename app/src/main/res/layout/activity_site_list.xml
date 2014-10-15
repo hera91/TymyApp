@@ -7,12 +7,6 @@
     tools:ignore="MergeRootFrame"
     >
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onAddSiteClicked"
-        android:text="@string/add_site" />
-
     <fragment
         android:id="@+id/site_list"
         android:layout_width="match_parent"

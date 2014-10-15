@@ -14,9 +14,11 @@ public class TymyApplication extends Application {
     // Local vars
     private Context ctx;
     // Current user, password and url
+    private String name;
     private String user;
     private String pass;
     private String url;
+    private long id;
 
 
     public static TymyApplication getInstance() {
@@ -30,6 +32,12 @@ public class TymyApplication extends Application {
         ctx = getApplicationContext();
     }
 
+    public long getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
     public String getUser() {
         return user;
     }
@@ -50,8 +58,10 @@ public class TymyApplication extends Application {
     }
 
     public void toggleSite(long id) {
+        this.id = id;
         Sites sites = new Sites(ctx);
         Cursor site = sites.getSite(id);
+        int nameIndex = site.getColumnIndex(Sites.COLUMN_NAME);
         int urlIndex = site.getColumnIndex(Sites.COLUMN_URL);
         int userIndex = site.getColumnIndex(Sites.COLUMN_USER);
         int passIndex = site.getColumnIndex(Sites.COLUMN_PASS);
@@ -61,6 +71,7 @@ public class TymyApplication extends Application {
 //			title.setError("");
         } else {
             site.moveToNext();
+            this.name = site.getString(nameIndex);
             this.url = site.getString(urlIndex);
             this.user = site.getString(userIndex);
             this.pass = site.getString(passIndex);

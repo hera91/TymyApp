@@ -6,5 +6,8 @@
     <dimen name="post_table_left_padd">5dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="post_left_pad">6dp</dimen>
+    <dimen name="post_table_top_pad">4dp</dimen>
+    <dimen name="post_right_pad">0dp</dimen>
 
 </resources>

@@ -1,8 +1,11 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="cz.tymy.api.tymyapp.SiteListActivity" >
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="cz.tymy.api.tymyapp.SiteListActivity">
+    <item android:id="@+id/action_add_site"
+        android:title="@string/action_add_site"
         android:orderInCategory="100"
-        android:showAsAction="never" />
+        android:icon="@drawable/abc_ic_clear_normal"
+        app:showAsAction="always"
+        />
 </menu>
