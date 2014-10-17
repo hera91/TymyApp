@@ -47,6 +47,8 @@ public class DiscussionDetailActivity extends FragmentActivity {
                     .add(R.id.discussion_detail_container, fragment)
                     .commit();
         }
+        TymyApplication appState = (TymyApplication) getApplication();
+        setTitle(appState.getName());
     }
 
     @Override

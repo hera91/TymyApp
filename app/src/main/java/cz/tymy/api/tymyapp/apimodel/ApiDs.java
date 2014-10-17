@@ -8,23 +8,23 @@ import org.json.JSONObject;
  */
 public class ApiDs extends ApiMsg {
     /* K_ for "KEY" */
-    public static final String K_ID = "id";
-    public static final String K_CAPTION = "caption";
-    public static final String K_DESCRIPTION = "description";
-    public static final String K_READRIGHTNAME = "readRightName";
-    public static final String K_WRITERIGHTNAME = "writeRightName";
-    public static final String K_DELETERIGHTNAME = "deleteRightName";
-    public static final String K_STICKYRIGHTNAME = "stickyRightName";
-    public static final String K_PUBLICREAD = "publicRead";
-    public static final String K_STATUS = "status";
-    public static final String K_EDITABLEPOSTS = "editablePosts";
-    public static final String K_ORDER = "order";
-    public static final String K_CANREAD = "canRead";
-    public static final String K_CANWRITE = "canWrite";
-    public static final String K_CANDELETE = "canDelete";
-    public static final String K_CANSTICK = "canStick";
-    public static final String K_NEWPOSTS = "newPosts";
-    public static final String K_NUMBEROFPOSTS = "numberOfPosts";
+    private static final String K_ID = "id";
+    private static final String K_CAPTION = "caption";
+    private static final String K_DESCRIPTION = "description";
+    private static final String K_READRIGHTNAME = "readRightName";
+    private static final String K_WRITERIGHTNAME = "writeRightName";
+    private static final String K_DELETERIGHTNAME = "deleteRightName";
+    private static final String K_STICKYRIGHTNAME = "stickyRightName";
+    private static final String K_PUBLICREAD = "publicRead";
+    private static final String K_STATUS = "status";
+    private static final String K_EDITABLEPOSTS = "editablePosts";
+    private static final String K_ORDER = "order";
+    private static final String K_CANREAD = "canRead";
+    private static final String K_CANWRITE = "canWrite";
+    private static final String K_CANDELETE = "canDelete";
+    private static final String K_CANSTICK = "canStick";
+    private static final String K_NEWPOSTS = "newPosts";
+    private static final String K_NUMBEROFPOSTS = "numberOfPosts";
 
     private int id;
     private String caption;

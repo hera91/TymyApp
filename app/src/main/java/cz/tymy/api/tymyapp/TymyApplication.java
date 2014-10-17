@@ -19,6 +19,7 @@ public class TymyApplication extends Application {
     private String pass;
     private String url;
     private long id;
+    private String dsName; // Name of current discussion
 
 
     public static TymyApplication getInstance() {
@@ -32,6 +33,7 @@ public class TymyApplication extends Application {
         ctx = getApplicationContext();
     }
 
+    // Database Site info
     public long getId() {
         return id;
     }
@@ -56,6 +58,13 @@ public class TymyApplication extends Application {
     public void setUrl(String url) {
         this.url = url;
     }
+    // Run-time info
+    public String getDsName() {
+        return dsName;
+    }
+    public void setDsName(String dsName) {
+        this.dsName = dsName;
+    }
 
     public void toggleSite(long id) {
         this.id = id;
@@ -66,7 +75,6 @@ public class TymyApplication extends Application {
         int userIndex = site.getColumnIndex(Sites.COLUMN_USER);
         int passIndex = site.getColumnIndex(Sites.COLUMN_PASS);
         if (site.getCount() < 1) {
-            // TODO add Error message
 //			title.setText(R.string.error);
 //			title.setError("");
         } else {

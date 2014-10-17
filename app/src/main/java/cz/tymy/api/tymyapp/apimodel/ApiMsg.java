@@ -1,9 +1,5 @@
 package cz.tymy.api.tymyapp.apimodel;
 
-import org.json.JSONObject;
-
-import java.lang.Object;
-
 /**
  * Created by ph on 9/24/14.
  */

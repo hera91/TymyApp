@@ -51,7 +51,7 @@ public class HttpClient {
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
             String inputLine;
-            StringBuffer response = new StringBuffer();
+            StringBuilder response = new StringBuilder();
 
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
@@ -59,7 +59,7 @@ public class HttpClient {
             in.close();
 
             //return result
-            return (String) response.toString();
+            return response.toString();
         }
         else
             return null;
@@ -91,7 +91,7 @@ public class HttpClient {
 
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
-        StringBuffer response = new StringBuffer();
+        StringBuilder response = new StringBuilder();
 
         while ((inputLine = in.readLine()) != null) {
             response.append(inputLine);

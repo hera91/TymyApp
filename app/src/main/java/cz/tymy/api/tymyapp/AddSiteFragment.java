@@ -49,8 +49,9 @@ public class AddSiteFragment extends Fragment {
 	
 	private void onSubmitClicked(){
 		View root = getView();
-		
-		String name = ((EditText)root.findViewById(R.id.add_site_name)).getText().toString();
+
+        assert root != null;
+        String name = ((EditText)root.findViewById(R.id.add_site_name)).getText().toString();
 		String url = ((EditText)root.findViewById(R.id.add_site_url)).getText().toString();
         String user = ((EditText)root.findViewById(R.id.add_site_user)).getText().toString();
         String pass = ((EditText)root.findViewById(R.id.add_site_pass)).getText().toString();

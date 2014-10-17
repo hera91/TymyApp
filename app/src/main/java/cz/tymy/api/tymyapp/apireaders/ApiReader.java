@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cz.tymy.api.tymyapp.apimodel.Api;
 import cz.tymy.api.tymyapp.apimodel.ApiDs;
 import cz.tymy.api.tymyapp.apimodel.ApiDsPost;
 import cz.tymy.api.tymyapp.apimodel.ApiException;
@@ -60,7 +59,7 @@ public class ApiReader {
                 dsDetail.setDs(ds);
                 // get 'posts' array from api_msg
                 List<ApiDsPost> apiDsPosts = readApiDsPostArray(
-                        (JSONArray) msgData.getJSONArray(ApiMsg.K_POSTS),
+                        msgData.getJSONArray(ApiMsg.K_POSTS),
                         dsDetail.getDs().getNewPosts());
                 dsDetail.setPosts(apiDsPosts);
             } catch (JSONException e) {
@@ -80,7 +79,7 @@ public class ApiReader {
      * @return
      * @throws IOException
      */
-    private ApiMsg readApiMsg(String api_json) throws IOException {
+    private ApiMsg readApiMsg(String api_json) {
         ApiMsg msg = new ApiDs();
 
         try {
@@ -101,7 +100,7 @@ public class ApiReader {
      * @return List<ApiDs>
      * @throws IOException
      */
-    private List<ApiDs> readApiDSesArray(JSONArray array) throws IOException {
+    private List<ApiDs> readApiDSesArray(JSONArray array) {
         List<ApiDs> DSes = new ArrayList<ApiDs>();
 
         for (int i = 0; i < array.length(); i++){

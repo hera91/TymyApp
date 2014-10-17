@@ -5,6 +5,9 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import java.io.IOException;
 
@@ -66,6 +69,18 @@ public class DiscussionDetailFragment extends ListFragment
         setListAdapter(mPostAdapter);
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_posts_list, container, false);
+    }
+
+    public void setTitle() {
+        TymyApplication appState = (TymyApplication) this.getActivity().getApplication();
+        this.getActivity().setTitle(appState.getName() + " / "
+                + mPostAdapter.getDsDetail().getDs().getCaption());
+    }
+
 //    @Override
 //    public void onViewCreated(View view, Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
@@ -89,6 +104,7 @@ public class DiscussionDetailFragment extends ListFragment
         } catch (ApiException e) {
             this.setEmptyText("Error " + e.getMessage());
         }
+        setTitle();
     }
 
     @Override

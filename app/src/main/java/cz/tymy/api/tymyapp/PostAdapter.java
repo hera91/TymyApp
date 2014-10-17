@@ -16,6 +16,7 @@ import cz.tymy.api.tymyapp.apimodel.DsDetail;
  */
 public class PostAdapter extends ArrayAdapter<ApiDsPost> {
     private final Context context;
+
     private DsDetail mDsDetail;
 
     public PostAdapter(Context context, int resource, DsDetail dsDetail) {
@@ -28,6 +29,14 @@ public class PostAdapter extends ArrayAdapter<ApiDsPost> {
         super(context, resource);
         this.context = context;
         this.mDsDetail = new DsDetail();
+    }
+
+    /**
+     * Get Disscussion details (DsDetail)
+     * @return DsDetail
+     */
+    public DsDetail getDsDetail() {
+        return mDsDetail;
     }
 
     /**

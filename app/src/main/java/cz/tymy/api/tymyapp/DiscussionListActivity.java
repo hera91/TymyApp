@@ -55,8 +55,7 @@ public class DiscussionListActivity extends FragmentActivity
                         .setActivateOnItemClick(true);
             }
         }
-
-        setTitle(appState.getUrl());
+        setTitle(appState.getName());
     }
 
     /**

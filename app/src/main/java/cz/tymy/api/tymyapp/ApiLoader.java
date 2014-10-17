@@ -7,7 +7,7 @@ import android.util.Log;
 
 import cz.tymy.api.tymyapp.apimodel.Api;
 
-public class ApiLoader extends AsyncTaskLoader<String> {
+class ApiLoader extends AsyncTaskLoader<String> {
     public static final String CMD = "cmd";
     public static final String CMD_DS_LIST = "ds_list";
     public static final String CMD_POST_LIST = "post_list";

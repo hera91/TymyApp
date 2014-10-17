@@ -1,8 +1,8 @@
 package cz.tymy.api.tymyapp;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,7 +75,6 @@ public class SiteListActivity extends FragmentActivity
         }
     }
 
-    //General Option menu TODO not used yet
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

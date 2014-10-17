@@ -6,10 +6,11 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 
 import java.io.IOException;
 
@@ -92,6 +93,12 @@ public class DiscussionListFragment extends ListFragment
         mDSesAdapter = new ArrayAdapter<ApiDs>(getActivity(), android.R.layout.simple_list_item_1,
                 android.R.id.text1);
         setListAdapter(mDSesAdapter);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_discussion_list, container, false);
     }
 
     @Override

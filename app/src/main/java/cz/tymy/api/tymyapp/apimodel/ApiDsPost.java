@@ -11,15 +11,15 @@ import org.json.JSONObject;
 public class ApiDsPost {
     /* API Msg description */
     /* K_ for "KEY" */
-    public static final String K_ID = "id";
-    public static final String K_DISCUSSIONID = "discussionId";
-    public static final String K_POST = "post";
-    public static final String K_CREATEDBYID = "createdById";
-    public static final String K_CREATEDAT = "createdAt";
-    public static final String K_UPDATEDBYID = "updatedById";
-    public static final String K_STICKY = "sticky";
-    public static final String K_CREATEDATSTR = "createdAtStr";
-    public static final String K_CREATEDBY = "createdBy";
+    private static final String K_ID = "id";
+    private static final String K_DISCUSSIONID = "discussionId";
+    private static final String K_POST = "post";
+    private static final String K_CREATEDBYID = "createdById";
+    private static final String K_CREATEDAT = "createdAt";
+    private static final String K_UPDATEDBYID = "updatedById";
+    private static final String K_STICKY = "sticky";
+    private static final String K_CREATEDATSTR = "createdAtStr";
+    private static final String K_CREATEDBY = "createdBy";
 
     // API Json fields
     private int id;

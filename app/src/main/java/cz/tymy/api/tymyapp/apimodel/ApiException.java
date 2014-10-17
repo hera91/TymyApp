@@ -23,7 +23,7 @@ public class ApiException extends Exception {
         return message;
     }
 
-    public void setMessage(String message) {
+    void setMessage(String message) {
         if (message.equals(ApiMsg.V_NOT_LOGGED_IN_1) ||
                 message.equals(ApiMsg.V_NOT_LOGGED_IN_2)) {
             this.message = ACCOUNT_PROBLEM;

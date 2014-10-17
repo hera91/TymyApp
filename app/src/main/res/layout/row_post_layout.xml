@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/post_row"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -22,7 +21,8 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/post_table_left_padd"
         android:paddingRight="@dimen/post_table_left_padd"
-        android:paddingTop="@dimen/post_table_top_pad">
+        android:paddingTop="@dimen/post_table_top_pad"
+        android:paddingBottom="@dimen/post_table_top_pad">
 
         <RelativeLayout
             android:id="@+id/post_header"
