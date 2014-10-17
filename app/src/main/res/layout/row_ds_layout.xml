@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ds_row"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ds_table"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/ds_table_left_padd"
+        android:paddingRight="@dimen/ds_table_left_padd"
+        android:paddingTop="@dimen/ds_table_top_pad"
+        android:paddingBottom="@dimen/ds_table_top_pad">
+
+        <RelativeLayout
+            android:id="@+id/ds_header"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/ds_caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ds_caption"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:gravity="left"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/ds_new_posts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ds_new_posts"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/ds_caption"
+                android:layout_toEndOf="@+id/ds_caption"
+                android:paddingLeft="@dimen/ds_new_posts_left"
+                android:paddingRight="@dimen/ds_new_posts_left"
+                android:gravity="left"
+                android:textColor="@android:color/holo_blue_light" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/ds_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ds_description"
+            android:textStyle="italic"
+            android:autoLink="all"
+            android:paddingLeft="@dimen/ds_desc_left_padd"
+            android:paddingRight="@dimen/ds_desc_left_padd"
+            android:textColor="@android:color/tertiary_text_dark"
+            />
+
+    </LinearLayout>
+</LinearLayout>

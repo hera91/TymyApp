@@ -35,15 +35,17 @@ public class AddSiteFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.add_site, container);
-		if (id != -1)
+        Button submit = (Button)view.findViewById(R.id.add_site_submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onSubmitClicked();
+            }
+        });
+		if (id != -1) {
             prefillFields(view);
-		Button submit = (Button)view.findViewById(R.id.add_site_submit);
-		submit.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				onSubmitClicked();
-			}
-		});
-		
+            submit.setText(getResources().getString(R.string.add_site_update));
+        }
+
 		return view;
 	}
 	

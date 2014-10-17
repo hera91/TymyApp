@@ -9,5 +9,9 @@
     <dimen name="post_left_pad">6dp</dimen>
     <dimen name="post_table_top_pad">5dp</dimen>
     <dimen name="post_right_pad">0dp</dimen>
+    <dimen name="ds_new_posts_left">15dp</dimen>
+    <dimen name="ds_table_left_padd">5dp</dimen>
+    <dimen name="ds_table_top_pad">2dp</dimen>
+    <dimen name="ds_desc_left_padd">5dp</dimen>
 
 </resources>

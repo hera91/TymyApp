@@ -50,7 +50,7 @@ public class DiscussionListFragment extends ListFragment
     /**
      * Adapter for Discussion List
      */
-    private ArrayAdapter<ApiDs> mDSesAdapter;
+    private DiscussionAdapter mDSesAdapter;
 
     /**
      * Application state singleton
@@ -90,21 +90,6 @@ public class DiscussionListFragment extends ListFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mDSesAdapter = new ArrayAdapter<ApiDs>(getActivity(), android.R.layout.simple_list_item_1,
-                android.R.id.text1);
-        setListAdapter(mDSesAdapter);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_discussion_list, container, false);
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
         // Application state singleton
         appState = (TymyApplication) this.getActivity().getApplication();
 
@@ -119,6 +104,20 @@ public class DiscussionListFragment extends ListFragment
         args.putString(ApiLoader.PASS, appState.getPass());
         args.putString(ApiLoader.SITE_URL, appState.getUrl());
         getLoaderManager().initLoader(0, args, this);
+
+        mDSesAdapter = new DiscussionAdapter(getActivity(), R.layout.row_ds_layout);
+        setListAdapter(mDSesAdapter);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_discussion_list, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override

@@ -24,5 +24,9 @@
     <string name="edit">Edit</string>
     <string name="action_add_site">Add Site</string>
     <string name="empty_site_list">No Sites..\n(use menu \'Add Site\')</string>
+    <string name="ds_caption">Discussion caption</string>
+    <string name="ds_new_posts">new: </string>
+    <string name="ds_description">Discussion description</string>
+    <string name="add_site_update">Update</string>
 
 </resources>

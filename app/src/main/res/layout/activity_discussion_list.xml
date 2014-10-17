@@ -4,7 +4,7 @@
     android:name="cz.tymy.api.tymyapp.DiscussionListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp"
     tools:context=".DiscussionListActivity"
     tools:layout="@android:layout/list_content" />
