@@ -1,7 +1,7 @@
 package cz.tymy.api.tymyapp;
 
 import android.app.Activity;
-import android.os.Bundle;
+import android.os.*;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -11,8 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.zip.Inflater;
 
 import cz.tymy.api.tymyapp.apimodel.ApiDs;
 import cz.tymy.api.tymyapp.apimodel.ApiException;
@@ -56,6 +59,12 @@ public class DiscussionListFragment extends ListFragment
      * Application state singleton
      */
     private TymyApplication appState;
+
+    /**
+     * Fragment View
+     */
+    private View mView;
+
 
     /**
      * A callback interface that all activities containing this fragment must
@@ -112,7 +121,8 @@ public class DiscussionListFragment extends ListFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_discussion_list, container, false);
+        mView = inflater.inflate(R.layout.fragment_discussion_list, container, false);
+        return mView;
     }
 
     @Override
@@ -159,6 +169,24 @@ public class DiscussionListFragment extends ListFragment
     }
 
     /**
+     * Set Custom Empty text
+     * @param text
+     */
+    @Override
+    public void setEmptyText(CharSequence text) {
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        TextView empty = (TextView) mView.findViewById(android.R.id.empty);
+        disableProgessBar();
+        empty.setText(text);
+    }
+
+    private void disableProgessBar() {
+        ProgressBar progress = (ProgressBar) mView.findViewById(R.id.progress_bar);
+        progress.setVisibility(View.GONE);
+    }
+
+
+    /**
      * Turns on activate-on-click mode. When this mode is on, list items will be
      * given the 'activated' state when touched.
      */
@@ -197,6 +225,7 @@ public class DiscussionListFragment extends ListFragment
             mDSesAdapter.clear();
             try {
                 mDSesAdapter.addAll(ar.readApiDSesList(results));
+                disableProgessBar();
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ApiException e) {

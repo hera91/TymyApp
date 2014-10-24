@@ -76,6 +76,7 @@ public class HttpClient {
         con.setRequestMethod("POST");
         con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+        //con.setRequestProperty("Content-Type", "application/json");
 
         String urlParameters = "name=" + URLEncoder.encode(name, "UTF-8")
                 + "&status=" + URLEncoder.encode(status, "UTF-8")

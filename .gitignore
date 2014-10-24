@@ -27,6 +27,7 @@ proguard/
 
 # Idea file
 .idea/workspace.xml
+.idea/libraries
 
 # Backup files
 *~

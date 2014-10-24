@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -35,9 +37,15 @@ public class DiscussionDetailFragment extends ListFragment
     private String mDsId;
 
     /**
+     * Fragment View
+     */
+    View mView;
+
+    /**
      * Adapter for PostList view
      */
     private PostAdapter mPostAdapter;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -72,19 +80,37 @@ public class DiscussionDetailFragment extends ListFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_posts_list, container, false);
+        mView = inflater.inflate(R.layout.fragment_posts_list, container, false);
+        return mView;
     }
 
-    public void setTitle() {
+    public void setTitle(String title) {
         TymyApplication appState = (TymyApplication) this.getActivity().getApplication();
-        this.getActivity().setTitle(appState.getName() + " / "
-                + mPostAdapter.getDsDetail().getDs().getCaption());
+        this.getActivity().setTitle(appState.getName() + " / " + title);
     }
 
 //    @Override
 //    public void onViewCreated(View view, Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
 //    }
+
+    /**
+     * Set Custom Empty text
+     * @param text Empty text
+     */
+    @Override
+    public void setEmptyText(CharSequence text) {
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        TextView empty = (TextView) mView.findViewById(android.R.id.empty);
+        disableProgressBar();
+        empty.setText(text);
+    }
+
+    private void disableProgressBar() {
+        ProgressBar progress = (ProgressBar) mView.findViewById(R.id.progress_bar);
+        progress.setVisibility(View.GONE);
+    }
+
 
     @Override
     public Loader<String> onCreateLoader(int i, Bundle args) {
@@ -102,9 +128,11 @@ public class DiscussionDetailFragment extends ListFragment
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ApiException e) {
-            this.setEmptyText("Error " + e.getMessage());
+            this.setEmptyText(getResources().getString(R.string.error) + ": " + e.getMessage());
+            return;
         }
-        setTitle();
+        setTitle(mPostAdapter.getDsDetail().getDs().getCaption());
+        disableProgressBar();
     }
 
     @Override

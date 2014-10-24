@@ -28,5 +28,7 @@
     <string name="ds_new_posts">new: </string>
     <string name="ds_description">Discussion description</string>
     <string name="add_site_update">Update</string>
+    <string name="empty_discussion_list">Empty discussions list</string>
+    <string name="error">Error</string>
 
 </resources>
