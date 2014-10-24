@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="action_settings">Nastavení</string>
+    <string name="add_site">Přidat stránky</string>
+    <string name="add_site_name">Jméno stránek</string>
+    <string name="add_site_subimt">Přidat</string>
+    <string name="add_site_user">Login</string>
+    <string name="add_site_pass">Heslo</string>
+    <string name="site_not_added">Přidání selhalo!</string>
+    <string name="site_not_updated">Změna stránek selhala!</string>
+    <string name="delete">Smazat</string>
+    <string name="site_deleted">Stránky smazány</string>
+    <string name="site_not_deleted">Smazání selhalo!</string>
+    <string name="edit">Upravit</string>
+    <string name="action_add_site">Přidat stránky</string>
+    <string name="empty_site_list">Žádné stránky..\n(pužijte menu \'Pridat stránky\')</string>
+    <string name="ds_new_posts">nové: </string>
+    <string name="add_site_update">Upravit</string>
+    <string name="error">Chyba</string>
+
+</resources>
