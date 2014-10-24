@@ -14,7 +14,7 @@
     <string name="site_not_deleted">Smazání selhalo!</string>
     <string name="edit">Upravit</string>
     <string name="action_add_site">Přidat stránky</string>
-    <string name="empty_site_list">Žádné stránky..\n(pužijte menu \'Pridat stránky\')</string>
+    <string name="empty_site_list">Žádné stránky..\n(použijte menu \'Pridat stránky\')</string>
     <string name="ds_new_posts">nové: </string>
     <string name="add_site_update">Upravit</string>
     <string name="error">Chyba</string>
